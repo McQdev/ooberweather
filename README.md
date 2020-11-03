@@ -34,93 +34,104 @@ oober-weather: Default values are imperial. If you prefer Metric, simply add "me
 
 oober-forecast: There's actually a lot you can do here, by tweaking the meteogram URL within the command. Here's how it breaks down, as far as I've reverse-engineered, since there's no public documentation of this:
 
-lat, lon, wfo, and zcode are all local forecast station location info. 
-gset:   ?
-gdiff:  ?
-unit:   Imperial (0) or Metric (1)
-tinfo:  Date legends on the x-axis. Only accurate at "CY6" so leave as-is
-ahour:  How many hours ahead of current time to begin metogram. Leave at 0 to begin at current time.
-pcmd:   93-digit binary number that specifies which data to plot. Each digit is a binary on/of key for that datum. In order, they are:
-        1. Temperature
-        2. Dewpoint
-        3 -  Heat Index
-        4 -  Wind Chill
-        5 -  Sustained Wind Speed and Gusts (with directional barbs)
-        6 -  Sky Cover
-        7 -  Precipitation Potential
-        8 -  Relative Humidity
-        9 -  Rain Likelihood
-        10 - Thunder Likelihood
-        11 - Snow Likelihood
-        12 - Freezing Rain Likelihood
-        13 - Sleet Likelihood
-        14 - Freezing Spray Likelihood
-        15 - Fog Likelihood
-        16 - Ceiling Height
-        17 - Visibility
-        18 - Significant Wave Height
-        19 - Wave Period
-        20 - ?
-        21 - Mxing Height
-        22 - Haines Index
-        23 - Lighting Activity Level
-        24 - Transport Wind speed (with directional barbs)
-        25 - 20-foot Wind Speed (with directional barbs)
-        26 - Ventilation Rate
-        27 - Swell Height
-        28 - Swell Period
-        29 - Swell 2 Height
-        30 - Swell 2 Period
-        31 - Wind Wave Height
-        32 - Dispersion Index
-        33 - Pressure
-        34 - 15mph Wind Likelihood
-        35 - 25mph Wind Likelihood
-        36 - 35mph Wind Likelihood
-        37 - 45mph Wind Likelihood
-        38 - 20mph Gust Likelihood
-        39 - 30mph Gust Likelihood
-        40 - 40mph Gust Likelihood
-        41 - 50mph Gust Likelihood
-        42 - 60mph Gust Likelihood
-        43 - 6 hour Quantitative Precipitation Forecast (0.10)
-        44 - 6 hour Quantitative Precipitation Forecast (0.25)
-        45 - 6 hour Quantitative Precipitation Forecast (0.50)
-        46 - 6 hour Quantitative Precipitation Forecast (1.00)
-        47 - 6 hour Quantitative Precipitation Forecast (2.00)
-        48 - 0.1 inch 6 hour Snowfall Likelihood
-        49 - 1 inch 6 hour Snowfall Likelihood
-        50 - 3 inch 6 hour Snowfall Likelihood
-        51 - 6 inch 6 hour Snowfall Likelihood
-        52 - 12 inch 6 hour Snowfall Likelihood
-        53 - Grassland Fire Danger Index
-        54 - Thunder Potential
-        55 - Davis Stability Index
-        56 - Atmospheric Dispersion Index
-        57 - Low Visibility Occurrence Risk Index
-        58 - Turner Stability Index
-        59 - Red Flag Threat Index
-        60 through 93 - ? (honestly I checked the first 3 or 4 and the last 3 or 4 and they were all invalid images)
+        lat, lon, wfo, and zcode are all local forecast station location info. 
+        gset:   ?
+        gdiff:  ?
+        unit:   Imperial (0) or Metric (1)
+        tinfo:  Date legends on the x-axis. Only accurate at "CY6" so leave as-is
+        ahour:  How many hours ahead of current time to begin metogram. Leave at 0 to begin at current time.
+        pcmd:   93-digit binary number that specifies which data to plot. Each digit is a binary on/of key for that datum. In order, they are:
+                1 - Temperature
+                1 - Dewpoint
+                3 -  Heat Index
+                4 -  Wind Chill
+                5 -  Sustained Wind Speed and Gusts (with directional barbs)
+                6 -  Sky Cover
+                7 -  Precipitation Potential
+                8 -  Relative Humidity
+                9 -  Rain Likelihood
+                10 - Thunder Likelihood
+                11 - Snow Likelihood
+                12 - Freezing Rain Likelihood
+                13 - Sleet Likelihood
+                14 - Freezing Spray Likelihood
+                15 - Fog Likelihood
+                16 - Ceiling Height
+                17 - Visibility
+                18 - Significant Wave Height
+                19 - Wave Period
+                20 - ?
+                21 - Mxing Height
+                22 - Haines Index
+                23 - Lighting Activity Level
+                24 - Transport Wind speed (with directional barbs)
+                25 - 20-foot Wind Speed (with directional barbs)
+                26 - Ventilation Rate
+                27 - Swell Height
+                28 - Swell Period
+                29 - Swell 2 Height
+                30 - Swell 2 Period
+                31 - Wind Wave Height
+                32 - Dispersion Index
+                33 - Pressure
+                34 - 15mph Wind Likelihood
+                35 - 25mph Wind Likelihood
+                36 - 35mph Wind Likelihood
+                37 - 45mph Wind Likelihood
+                38 - 20mph Gust Likelihood
+                39 - 30mph Gust Likelihood
+                40 - 40mph Gust Likelihood
+                41 - 50mph Gust Likelihood
+                42 - 60mph Gust Likelihood
+                43 - 6 hour Quantitative Precipitation Forecast (0.10)
+                44 - 6 hour Quantitative Precipitation Forecast (0.25)
+                45 - 6 hour Quantitative Precipitation Forecast (0.50)
+                46 - 6 hour Quantitative Precipitation Forecast (1.00)
+                47 - 6 hour Quantitative Precipitation Forecast (2.00)
+                48 - 0.1 inch 6 hour Snowfall Likelihood
+                49 - 1 inch 6 hour Snowfall Likelihood
+                50 - 3 inch 6 hour Snowfall Likelihood
+                51 - 6 inch 6 hour Snowfall Likelihood
+                52 - 12 inch 6 hour Snowfall Likelihood
+                53 - Grassland Fire Danger Index
+                54 - Thunder Potential
+                55 - Davis Stability Index
+                56 - Atmospheric Dispersion Index
+                57 - Low Visibility Occurrence Risk Index
+                58 - Turner Stability Index
+                59 - Red Flag Threat Index
+                60 through 93 - ? (honestly I checked the first 3 or 4 and the last 3 or 4 and they were all invalid images)
 
-        It appears safe to leave off all trailing zeroes after the last 1 desired key, so don't feel like you have to use them all. 
-        The default set in this package includes Temperature, Windspeed, Gusts, Precipitation Potential, Rain Likelihood, and Thunder Likelihood.
+                It appears safe to leave off all trailing zeroes after the last 1 desired key, so don't feel like you have to use them all. 
+                The default set in this package includes Temperature, Windspeed, Gusts, Precipitation Potential, Rain Likelihood, and Thunder Likelihood.
 
-lg:     Languge. Unknown codebook, but "en" is english and "sp" works for spanish. 
-indu:   Windspeed units for surface winds, transport winds, and 20-foot winds. 0 is mph, 1 is knots, keys are separated by a bang (!).
-dd:     Dashes and Dots. 0 plots solid lines with small dots, 1 plots solid/dashed lines and differentiated, large dots.
-bw:     Color (0) or Black & White (1)
-hrspan: Hours to plot (up to 48)
-pqpfhr: ?
-psnwhr: ?
+        lg:     Languge. Unknown codebook, but "en" is english and "sp" works for spanish. 
+        indu:   Windspeed units for surface winds, transport winds, and 20-foot winds. 0 is mph, 1 is knots, keys are separated by a bang (!).
+        dd:     Dashes and Dots. 0 plots solid lines with small dots, 1 plots solid/dashed lines and differentiated, large dots.
+        bw:     Color (0) or Black & White (1)
+        hrspan: Hours to plot (up to 48)
+        pqpfhr: ?
+        psnwhr: ?
 
 By default, the image processing takes a black and white version, negates it, and strips away any gridlines and shading. But this is togglable by adjusting the convert command. Here's how it currently works:
--negate:        Creates a white-on-black version of the source image
--fuzz:          Creates a margin for color replacement (change this to 5 if you want gridlines)
--fill:          Defines the replacement color for the next value
--opaque:        Chooses the opaque color to replace, in this case #262626. 
--transparent:   Makes the background color (in this case black) transparent
--shave:         Remove the outside border by contracting the image by 1 pixel on all sides. 
+
+        negate:        Creates a white-on-black version of the source image
+        fuzz:          Creates a margin for color replacement (change this to 5 if you want gridlines)
+        fill:          Defines the replacement color for the next value
+        opaque:        Chooses the opaque color to replace, in this case #262626. 
+        transparent:   Makes the background color (in this case black) transparent
+        shave:         Remove the outside border by contracting the image by 1 pixel on all sides. 
         
+oober-radar: The URL in the command for both the map and the radar data itself has a number of adjustable features:
         
+        radius:                 Distance from the map center (miles)
+        noclutter:              Reduce radar noise (1) or show raw feed (0)
+        smooth:                 Smooth radar data (1) or show raw shapes (0)
+        reproj.automerc:
+        width and height:
+        num:
+        delay:
+        newmaps:
+        type:
         
 
