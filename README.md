@@ -41,8 +41,8 @@ unit:   Imperial (0) or Metric (1)
 tinfo:  Date legends on the x-axis. Only accurate at "CY6" so leave as-is
 ahour:  How many hours ahead of current time to begin metogram. Leave at 0 to begin at current time.
 pcmd:   93-digit binary number that specifies which data to plot. Each digit is a binary on/of key for that datum. In order, they are:
-        1 -  Temperature
-        2 -  Dewpoint
+        1. Temperature
+        2. Dewpoint
         3 -  Heat Index
         4 -  Wind Chill
         5 -  Sustained Wind Speed and Gusts (with directional barbs)
