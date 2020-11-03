@@ -153,7 +153,7 @@ oober-radar: The URL in the command for both the map and the radar data itself h
         
 Further, there are two options for geography: black lines or white lines. Simply adjust the comments (###) to select the preferred option. Also, the colors of the radar are the default NEXRAD colors, but they can be inverted for aesthetics by including "-negate" after the radar URL (it looks *rad*).
 
-#Final Words
+# FINAL WORDS
 Everything is very, very hacky because I'm a total amateur. Don't hate me, just tweak, polish, and change as needed. 
         
         
