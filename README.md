@@ -127,11 +127,25 @@ oober-radar: The URL in the command for both the map and the radar data itself h
         radius:                 Distance from the map center (miles)
         noclutter:              Reduce radar noise (1) or show raw feed (0)
         smooth:                 Smooth radar data (1) or show raw shapes (0)
-        reproj.automerc:
-        width and height:
-        num:
-        delay:
-        newmaps:
-        type:
+        reproj.automerc:        Change map projection. Leaving this variable out altoghether compresses the image vertically.
+        width and height:       Image resolution. It seems to theoretically render at any resolution so be careful. If you have a 
+                                retina display it looks very good at double the resolution determined for the widget in CSS. 
+        num:                    Number of radar frames to render for animation (up to 15)
+        delay:                  The amount of time between frames (more time = slower)
+        newmaps:                Remnder the geography lines or not. Keep on for the map command, off for the radar.
+        type:                   Radar product. Default is N0R, base reflectivity 0.50º. Options are:
+                                N0R: Base Reflectivity 0.50º 124NMI Range
+                                N1R: Base Reflectivity 1.45º 124NMI Range
+                                N2R: Base Reflectivity 2.40º 124NMI Range
+                                N3R: Base Reflectivity 3.35º 124NMI Range
+                                N0Z: Base Reflectivity 0.50º 248NMI Range
+                                N0V: Base Radial Velocity 0.50º 124NMI Range
+                                N0S: Storm Relative Mean Radial Velocity 0.50º 124NMI Range
+                                N1S: Storm Relative Mean Radial Velocity 1.45º 124NMI Range
+                                N2S: Storm Relative Mean Radial Velocity 2.40º 124NMI Range
+                                N3S: Storm Relative Mean Radial Velocity 3.35º 124NMI Range
+                                NTP: Storm Total Surface Rainfall Accumulation 124NMI Range
+                                N1P: 1 Hour Running Surface Rainfall Accumulation 124NMI Range
+                                n:   No radar product. Exploited to produce blank map. 
         
 
