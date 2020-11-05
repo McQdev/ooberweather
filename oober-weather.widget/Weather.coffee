@@ -1,4 +1,4 @@
-command: "NYweather.widget/get_weather.sh"
+command: "oober-weather.widget/get_weather.sh"
 
 refreshFrequency: 5000
 

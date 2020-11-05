@@ -1,17 +1,20 @@
-# Use this command for white geography lines #
 
+latitude = '40.9115'
+longitude = '-73.7824'
+
+# White lines 
 command: "/usr/local/bin/convert \
 'https://radblast.wunderground.com/cgi-bin/radar/WUNIDS_composite?\
-centerlat=40.9115&\
-centerlon=-73.7824&\
+centerlat=#{latitude}&\
+centerlon=#{longitude}&\
 radius=300&\
 reproj.automerc=1&width=2000&height=2000&newmaps=1&type=n' \
 -fuzz 5% -fill white -opaque black -transparent '#292f75' \
-./NYradar.widget/Pics/map.png; \
+./oober-radar.widget/Pics/map.png; \
 /usr/local/bin/convert \
 'https://radblast.wunderground.com/cgi-bin/radar/WUNIDS_composite?\
-centerlat=40.9115&\
-centerlon=-73.7824&\
+centerlat=#{latitude}&\
+centerlon=#{longitude}&\
 radius=300&\
 noclutter=1&\
 smooth=0&\
@@ -20,23 +23,21 @@ width=750&\
 height=750&\
 num=15&\
 delay=20' \
-./NYradar.widget/Pics/radar.gif 2>/dev/null; \
-echo ./NYradar.widget/Pics/radar.gif"
+./oober-radar.widget/Pics/radar.gif 2>/dev/null"
 
-# Use this command for black geography lines #
-###
+### black lines
 command: "/usr/local/bin/convert \
 'https://radblast.wunderground.com/cgi-bin/radar/WUNIDS_composite?\
-centerlat=40.9115&\
-centerlon=-73.7824&\
+centerlat=#{latitude}&\
+centerlon=#{longitude}&\
 radius=300&\
 reproj.automerc=0&width=1500&height=1500&newmaps=1&type=nCr' \
 -fuzz 5% -fill black -transparent '#292f75' \
-./NYradar.widget/Pics/map.png; \
+./oober-radar.widget/Pics/map.png; \
 /usr/local/bin/convert \
 'https://radblast.wunderground.com/cgi-bin/radar/WUNIDS_composite?\
-centerlat=40.9115&\
-centerlon=-73.7824&\
+centerlat=#{latitude}&\
+centerlon=#{longitude}&\
 radius=300&\
 noclutter=1&\
 smooth=0&\
@@ -45,19 +46,19 @@ width=750&\
 height=750&\
 num=15&\
 delay=20' \
-./NYradar.widget/Pics/radar.gif 2>/dev/null; \
-echo ./NYradar.widget/Pics/radar.gif"
+./oober-radar.widget/Pics/radar.gif 2>/dev/null;""
 ###
+
 refreshFrequency: 300000 # 5 Minutes
 
 render: (output)-> """
 <div id="container">
 	<div id="wrapper">
 	<div id="radar">
-		<img src="./NYradar.widget/Pics/radar.gif" style="width: 700px">
+		<img src="./oober-radar.widget/Pics/radar.gif" style="width: 700px">
 	</div>
 	<div id="map">
-		<img src="./NYradar.widget/Pics/map.png" style="width: 700px">
+		<img src="./oober-radar.widget/Pics/map.png" style="width: 700px">
 	</div>
 	</div>
 	<div id="after">RADAR</div>

@@ -5,8 +5,8 @@ pcmd=10001010110000000000000000000000000000000000000000000000000&\
 lg=en&indu=1!1!1!&dd=&bw=1&hrspan=24&pqpfhr=6&psnwhr=6' \
 -negate -fuzz 6% -fill '#000' -opaque '#262626' \
 -transparent black -shave 1x1 \
-./forecast.widget/Pics/forecast.gif 2>/dev/null; \
-echo ./forecast.widget/Pics/forecast.gif"
+./oober-forecast.widget/Pics/forecast.gif 2>/dev/null; \
+echo ./oober-forecast.widget/Pics/forecast.gif"
 
 #command: "/usr/local/bin/convert \
 #'https://forecast.weather.gov/meteograms/Plotter.php?lat=45.459&lon=-98.4869&\
@@ -15,8 +15,8 @@ echo ./forecast.widget/Pics/forecast.gif"
 #lg=en&indu=1!1!1!&dd=&bw=1&hrspan=24&pqpfhr=6&psnwhr=6' \
 #-negate -fuzz 6% -fill '#000' -opaque '#262626' \
 #-transparent black -shave 1x1 \
-#./forecast.widget/Pics/forecast.gif 2>/dev/null; \
-#echo ./forecast.widget/Pics/forecast.gif"
+#./oober-forecast.widget/Pics/forecast.gif 2>/dev/null; \
+#echo ./oober-forecast.widget/Pics/forecast.gif"
 
 refreshFrequency: 300000 # 5 Minutes
 
