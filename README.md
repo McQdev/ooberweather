@@ -22,7 +22,7 @@ oober-weather: You need the 4-letter code for your nearest ASOS weather station.
 
 oober-forecast: You need four pieces of information from your location's NOAA meteogram. These are published on the NOAA's forecast page for your zip code, accessible here https://www.weather.gov. On the right side, there's a thumbnail of a meteogram graph under the heading "Hourly Forecast." Click that, and then find the URL for the metogram image itself. It will look something like this: https://forecast.weather.gov/meteograms/Plotter.php?lat=34.0714&lon=-118.3974&wfo=LOX&zcode=CAZ041... It's the 4 variables after the Plotter.php call: lat, lon, wfo, and zcode. Copy these and replace them in the  forecast.coffee file in the oober-forecast folder. 
 
-oober-radar: You need the latitude and longitude here as well, and you can use the same from the meteogram above. Just replace the values for centerlat and centerlon which appear twice in the commands at the top of the radar.coffee file in the oober-radar widget folder. Or you can find them with any other GPS lookup tool, I don't judge. 
+oober-radar: This now uses Übersicht's location lookup to find your location. No latitude/longitude needed. Working on addding manual control options back in, but you can delete the geolocation function and hardcode the latitude and longitude if you want. You need the latitude and longitude here as well, and you can use the same from the meteogram above. Just replace the values for centerlat and centerlon which appear twice in the commands at the top of the radar.coffee file in the oober-radar widget folder. Or you can find them with any other GPS lookup tool, I don't judge. 
 
 # OTHER CUSTOMIZATION FEATURES
 
