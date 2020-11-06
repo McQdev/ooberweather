@@ -1,29 +1,4 @@
-
-latitude = '40.9115'
-longitude = '-73.7824'
-
-# White lines 
-command: "/usr/local/bin/convert \
-'https://radblast.wunderground.com/cgi-bin/radar/WUNIDS_composite?\
-centerlat=#{latitude}&\
-centerlon=#{longitude}&\
-radius=300&\
-reproj.automerc=1&width=2000&height=2000&newmaps=1&type=n' \
--fuzz 5% -fill white -opaque black -transparent '#292f75' \
-./oober-radar.widget/Pics/map.png; \
-/usr/local/bin/convert \
-'https://radblast.wunderground.com/cgi-bin/radar/WUNIDS_composite?\
-centerlat=#{latitude}&\
-centerlon=#{longitude}&\
-radius=300&\
-noclutter=1&\
-smooth=0&\
-reproj.automerc=1&\
-width=750&\
-height=750&\
-num=15&\
-delay=20' \
-./oober-radar.widget/Pics/radar.gif 2>/dev/null"
+# White lines
 
 ### black lines
 command: "/usr/local/bin/convert \
@@ -55,15 +30,43 @@ render: (output)-> """
 <div id="container">
 	<div id="wrapper">
 	<div id="radar">
-		<img src="./oober-radar.widget/Pics/radar.gif" style="width: 700px">
+		<img src="./oober-radar.widget/Pics/radar.gif" style="width: 600px">
 	</div>
 	<div id="map">
-		<img src="./oober-radar.widget/Pics/map.png" style="width: 700px">
+		<img src="./oober-radar.widget/Pics/map.png" style="width: 600px">
 	</div>
 	</div>
 	<div id="after">RADAR</div>
 </div>
 """
+afterRender: (domEl) ->
+  geolocation.getCurrentPosition (e) =>
+    coords     = e.position.coords
+    [lat, lon] = [coords.latitude, coords.longitude]
+    @command   = @makeCommand("#{lat}","#{lon}")
+
+makeCommand: (lat,lon) ->
+  "/usr/local/bin/convert \
+	'https://radblast.wunderground.com/cgi-bin/radar/WUNIDS_composite?\
+	centerlat=#{lat}&\
+	centerlon=#{lon}&\
+	radius=300&\
+	reproj.automerc=1&width=2000&height=2000&newmaps=1&type=n' \
+	-fuzz 5% -fill white -opaque black -transparent '#292f75' \
+	./oober-radar.widget/Pics/map.png; \
+	/usr/local/bin/convert \
+	'https://radblast.wunderground.com/cgi-bin/radar/WUNIDS_composite?\
+	centerlat=#{lat}&\
+	centerlon=#{lon}&\
+	radius=300&\
+	noclutter=1&\
+	smooth=0&\
+	reproj.automerc=1&\
+	width=750&\
+	height=750&\
+	num=15&\
+	delay=20' \
+	./oober-radar.widget/Pics/radar.gif 2>/dev/null"
 
 style: """
 
@@ -90,14 +93,18 @@ style: """
 }
 
 #radar {
-		position: absolute;
-		top: 1;
-		left: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
 }
 #map {
-		position: absolute;
-		top: 1;
-	  left: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
 		z-index: 0;
 }
 
